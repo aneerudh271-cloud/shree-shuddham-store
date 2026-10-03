@@ -4,7 +4,7 @@ This is a static storefront hosted on Vercel, with a Node.js API service on Rend
 
 ## Deploy
 
-1. Import this repository into Vercel. The project root is this directory; no build command or output directory is required. Vercel serves the HTML, CSS, JavaScript, and `assets/` files as static assets and proxies `/api/*` to the Render service configured in `vercel.json`.
+1. Import this repository into Vercel and set **Root Directory** to `frontend`. This keeps the Node API source outside the Vercel deployment and avoids Hobby's Serverless Function limit. No build command or output directory is required. Vercel serves the frontend's HTML, CSS, JavaScript, and `assets/` files as static assets and proxies `/api/*` to the Render service configured in `frontend/vercel.json`.
 2. Create a Render web service from this repository using `render.yaml`. The API starts with `npm run start:api` and listens on Render's assigned port. The starter configuration uses Render's free Singapore region; free services may sleep when idle and are not suitable for a production launch without upgrading.
 3. Create a MongoDB Atlas database and an application user with `readWrite` access only to the `shree_shuddham` database. In Atlas Network Access, allow-list the outbound IP ranges Render documents for the service's selected region (Singapore). Do not use `0.0.0.0/0` for production. Render offers dedicated outbound IPs on paid workspace plans; its shared regional ranges are less isolated.
 4. In Render → API service → Environment, set these values (never put secrets in Vercel or source control):
