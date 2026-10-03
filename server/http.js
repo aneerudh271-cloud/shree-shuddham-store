@@ -62,6 +62,18 @@ export function validateOrigin(req) {
     error.status = 403;
     throw error;
   }
+  const allowedOrigins = String(process.env.ALLOWED_ORIGINS || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (allowedOrigins.length) {
+    if (!allowedOrigins.includes(parsed.origin)) {
+      const error = new Error('Cross-origin requests are not allowed.');
+      error.status = 403;
+      throw error;
+    }
+    return;
+  }
   const host = String(req.headers['x-forwarded-host'] || req.headers.host || '').split(',')[0].trim().toLowerCase();
   if (!host || parsed.host.toLowerCase() !== host) {
     const error = new Error('Cross-origin requests are not allowed.');
@@ -76,6 +88,6 @@ export function handleError(res, error) {
     send(res, error.status, { error: error.message });
     return;
   }
-  console.error('Vercel API request failed:', error);
+  console.error('API request failed:', error);
   send(res, 500, { error: 'The request could not be completed.' });
 }
