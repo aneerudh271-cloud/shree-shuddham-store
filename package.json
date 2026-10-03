@@ -1,0 +1,17 @@
+{
+  "name": "shree-shuddham-store",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Shree Shuddham storefront and Vercel serverless backend",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "hash-admin-password": "node scripts/hash-admin-password.mjs"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "mongodb": "^6.17.0"
+  }
+}
