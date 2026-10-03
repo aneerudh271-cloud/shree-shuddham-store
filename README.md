@@ -1,21 +1,23 @@
-# Shree Shuddham — Vercel deployment
+# Shree Shuddham — Vercel + Render deployment
 
-This is a static storefront with Vercel Node.js Functions and MongoDB Atlas. Product, coupon, order and admin records are served by `/api`; the browser is not the source of truth for prices or order status. Payment is intentionally simulated: **no Razorpay SDK, key, charge, or payment verification is configured.**
+This is a static storefront hosted on Vercel, with a Node.js API service on Render and MongoDB Atlas persistence. Vercel proxies `/api/*` requests to Render so browser requests and admin session cookies remain same-origin. Product, coupon, order and admin records are served by `/api`; the browser is not the source of truth for prices or order status. Payment is intentionally simulated: **no Razorpay SDK, key, charge, or payment verification is configured.**
 
 ## Deploy
 
-1. Push this project to a private GitHub repository and import it into Vercel. The project root is this directory; no build command or output directory is required. Vercel runs Node.js Functions from `api/` and serves the HTML, CSS, JavaScript, and `assets/` files as static assets.
-2. Create a MongoDB Atlas database and a database user with read/write access to that database. Configure Atlas network access for the Vercel project using the outbound/static IP feature available on your Vercel plan. Only use a broad Atlas IP allow-list for a short-lived test deployment, never for production.
-3. In Vercel → Project → Settings → Environment Variables, set these values for Production (and separately Preview if needed):
+1. Import this repository into Vercel. The project root is this directory; no build command or output directory is required. Vercel serves the HTML, CSS, JavaScript, and `assets/` files as static assets and proxies `/api/*` to the Render service configured in `vercel.json`.
+2. Create a Render web service from this repository using `render.yaml`. The API starts with `npm run start:api` and listens on Render's assigned port. The starter configuration uses Render's free Singapore region; free services may sleep when idle and are not suitable for a production launch without upgrading.
+3. Create a MongoDB Atlas database and an application user with `readWrite` access only to the `shree_shuddham` database. In Atlas Network Access, allow-list the outbound IP ranges Render documents for the service's selected region (Singapore). Do not use `0.0.0.0/0` for production. Render offers dedicated outbound IPs on paid workspace plans; its shared regional ranges are less isolated.
+4. In Render → API service → Environment, set these values (never put secrets in Vercel or source control):
    - `MONGODB_URI` — Atlas connection URI. Keep it private.
-   - `MONGODB_DB` — `shree_shuddham` (or your chosen database name).
+   - `MONGODB_DB` — `shree_shuddham`.
    - `ADMIN_USERNAME` — the bootstrap administrator ID.
    - `ADMIN_PASSWORD_HASH` — bcrypt hash for a new, unique administrator password.
+   - `ALLOWED_ORIGINS` — comma-separated exact storefront/admin origins, including scheme (for example `https://www.shreeshuddham.in,https://shreeshuddham.in,https://admin.shreeshuddham.com`).
    - `NODE_ENV` — `production`.
-4. Generate the password hash locally, in a terminal, after installing dependencies with `npm install`, by running `npm run hash-admin-password`. The prompt does not echo the password. Copy only the resulting bcrypt hash into Vercel. Use a new password; never reuse or publish a password previously shared in chat. The application does not contain or deploy the supplied plaintext credentials.
-5. Deploy. On the first API request, the backend creates MongoDB indexes and seeds the starter products and coupon codes if those collections are empty.
-6. In Vercel → Project → Settings → Domains, add `admin.shreeshuddham.com` to this same project and create the exact DNS record Vercel displays at your DNS provider. The host rewrite serves `admin.html` at the admin subdomain root. Wait for Vercel to issue HTTPS before testing admin login.
-7. Test the storefront on its production domain and the dashboard at `https://admin.shreeshuddham.com`. Confirm products load, create a test order with fictional customer data, start the demo payment, download the invoice, and accept/decline and update delivery from the dashboard. Remove test orders from the database before launch if any were created.
+5. Generate the password hash locally, in a terminal, after installing dependencies with `npm install`, by running `npm run hash-admin-password`. The prompt does not echo the password. Copy only the resulting bcrypt hash into Render. Use a new password; never reuse or publish a password previously shared in chat. The application does not contain or deploy the supplied plaintext credentials.
+6. Deploy the Render service and verify its `/api/health` endpoint reports a connected database. Then deploy the Vercel project; `/api/*` is forwarded to the Render service.
+7. In Vercel → Project → Settings → Domains, add `admin.shreeshuddham.com` to this project and create the exact DNS record Vercel displays at your DNS provider. The host rewrite serves `admin.html` at the admin subdomain root. Wait for Vercel to issue HTTPS before testing admin login.
+8. Test the storefront on its production domain and the dashboard at `https://admin.shreeshuddham.com`. Confirm products load, create a test order with fictional customer data, start the demo payment, download the invoice, and accept/decline and update delivery from the dashboard. Remove test orders from the database before launch if any were created.
 
 Before customers can order, sign in to the admin dashboard and add the six-digit PIN codes your business serves. New PIN codes are active by default; deactivated or removed codes cannot be used for new orders. Checkout checks availability before continuing, and the order API verifies it again before saving.
 

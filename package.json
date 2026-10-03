@@ -3,12 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Shree Shuddham storefront and Vercel serverless backend",
+  "description": "Shree Shuddham storefront on Vercel with a Node.js API backend",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "hash-admin-password": "node scripts/hash-admin-password.mjs"
+    "hash-admin-password": "node scripts/hash-admin-password.mjs",
+    "start:api": "node server-entry.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
