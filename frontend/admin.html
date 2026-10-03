@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f8f8f0">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png">
+  <title>Admin demo | Shree Shuddham</title>
+  <meta name="description" content="Shree Shuddham local-only admin dashboard prototype.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <main class="admin-login" id="admin-login">
+    <a class="brand admin-login-brand" href="index.html"><img class="brand-logo" src="assets/shree-shuddham-logo.png" alt="Shree Shuddham" width="632" height="598"></a>
+    <span class="eyebrow">Operations workspace · Prototype</span>
+    <h1>Admin sign in</h1>
+    <p class="admin-warning"><strong>Local demo only.</strong> This static page does not securely authenticate you. Never use real customer data or production credentials here. The admin hostname must be configured by your hosting provider.</p>
+    <form id="admin-login-form">
+      <label class="admin-field">Admin ID<input id="admin-login-id" autocomplete="username" required></label>
+      <label class="admin-field">Password<input id="admin-login-password" type="password" autocomplete="current-password" required></label>
+      <button class="button button-primary admin-login-submit" type="submit">Enter demo dashboard <span aria-hidden="true">→</span></button>
+      <p class="admin-error" id="admin-login-message" role="status"></p>
+    </form>
+    <a class="admin-back-link" href="index.html">← Back to storefront</a>
+  </main>
+
+  <div class="admin-app" id="admin-app" hidden>
+    <header class="admin-header">
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/shree-shuddham-logo.png" alt="Shree Shuddham" width="632" height="598"></a>
+      <div class="admin-header-right"><span class="demo-pill">LOCAL DEMO</span><span id="admin-current-user">Admin</span><button class="admin-button subtle-button" id="admin-logout" type="button">Exit demo</button></div>
+    </header>
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <p class="sidebar-caption">WORKSPACE</p>
+        <a href="#admin-overview">Overview</a>
+        <a href="#admin-orders">Orders</a>
+        <a href="#admin-products">Products</a>
+        <a href="#admin-coupons">Coupons</a>
+        <a href="#admin-pincodes">Delivery PIN codes</a>
+        <a href="#admin-settings">Account settings</a>
+        <a class="sidebar-store-link" href="index.html">← View storefront</a>
+      </aside>
+      <main class="admin-content">
+        <div class="admin-demo-banner"><strong>Prototype data only.</strong> This demo stores products, coupons, delivery PIN codes and orders in this browser's local storage. It is not connected to a database, real Razorpay, or a secure admin service.</div>
+        <section id="admin-overview">
+          <span class="eyebrow">Your shop at a glance</span>
+          <h1>Good morning, <em id="admin-name-heading">Admin.</em></h1>
+          <p class="admin-subtitle">Review incoming demo orders and keep your catalogue up to date.</p>
+          <div class="admin-metrics">
+            <article><span>Orders to review</span><strong id="metric-pending">0</strong></article>
+            <article><span>Products in shop</span><strong id="metric-products">0</strong></article>
+            <article><span>Active coupons</span><strong id="metric-coupons">0</strong></article>
+            <article><span>Demo order value</span><strong id="metric-revenue">₹0</strong></article>
+          </div>
+        </section>
+        <section class="admin-section" id="admin-orders">
+          <div class="admin-section-heading"><div><span class="eyebrow">Customer requests</span><h2>Orders</h2></div><button class="admin-button" id="refresh-admin" type="button">Refresh</button></div>
+          <div class="admin-table-wrap"><table><thead><tr><th>Order / customer</th><th>Delivery / agent</th><th>Items / total</th><th>Payment (demo)</th><th>Status / manage</th></tr></thead><tbody id="orders-table"></tbody></table></div>
+          <p class="admin-empty" id="orders-empty">No demo orders yet. Customer checkouts on this same browser appear here.</p>
+          <button class="admin-button" id="load-more-orders" type="button" hidden>Load older orders</button>
+        </section>
+        <section class="admin-section" id="admin-products">
+          <div class="admin-section-heading"><div><span class="eyebrow">Catalogue</span><h2>Products</h2></div></div>
+          <form class="product-editor" id="product-form">
+            <input type="hidden" name="id">
+            <label class="admin-field">Product name<input name="name" required maxlength="80"></label>
+            <label class="admin-field">Category<select name="category" required><option>Milk & Dairy</option><option>Vegetables</option><option>Fruits</option><option>Bakery</option><option>Chicken</option><option>Fish</option><option>Pantry</option></select></label>
+            <label class="admin-field">Price (INR)<input name="price" type="number" min="1" step="1" required></label>
+            <label class="admin-field">Unit<input name="unit" placeholder="1 L, 500 g, loaf" required maxlength="30"></label>
+            <label class="admin-field editor-wide">Description<input name="description" required maxlength="140"></label>
+            <label class="admin-field editor-wide">Image URL<input name="image" type="url" placeholder="https://..."></label>
+            <label class="admin-field editor-wide">Image alt text<input name="alt" maxlength="140"></label>
+            <p class="editor-image-note">Use a hosted HTTPS image URL. Leave the image URL blank to remove the product image. Images added here are saved only in this browser demo.</p>
+            <div class="editor-actions"><button class="button button-primary" id="save-product" type="submit">Add product <span aria-hidden="true">+</span></button><button class="admin-button subtle-button" id="cancel-product-edit" type="button" hidden>Cancel edit</button></div>
+          </form>
+          <div class="admin-table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Image</th><th>Actions</th></tr></thead><tbody id="products-table"></tbody></table></div>
+        </section>
+        <section class="admin-section" id="admin-coupons">
+          <div class="admin-section-heading"><div><span class="eyebrow">Offers for your customers</span><h2>Coupon codes</h2></div></div>
+          <form class="coupon-editor" id="coupon-form">
+            <label class="admin-field">Discount type<select name="type"><option value="percent">Percentage</option><option value="fixed">Fixed amount (INR)</option></select></label>
+            <label class="admin-field">Discount value<input name="value" type="number" min="1" max="100" value="10" required></label>
+            <button class="button button-primary" type="submit">Generate code <span aria-hidden="true">✳</span></button>
+          </form>
+          <div class="admin-table-wrap"><table><thead><tr><th>Code</th><th>Offer</th><th>Status</th><th>Actions</th></tr></thead><tbody id="coupons-table"></tbody></table></div>
+        </section>
+        <section class="admin-section" id="admin-pincodes">
+          <div class="admin-section-heading"><div><span class="eyebrow">Where you deliver</span><h2>Delivery PIN codes</h2></div></div>
+          <form class="coupon-editor" id="pincode-form">
+            <label class="admin-field">6-digit PIN code<input name="pin" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required></label>
+            <label class="admin-field">Area / locality <span>(optional)</span><input name="label" maxlength="100"></label>
+            <button class="button button-primary" type="submit">Add PIN code <span aria-hidden="true">+</span></button>
+          </form>
+          <p class="editor-image-note">Only active PIN codes can be used to place orders. Removing a code permanently deletes it from the service area list.</p>
+          <div class="admin-table-wrap"><table><thead><tr><th>PIN code</th><th>Area / locality</th><th>Status</th><th>Actions</th></tr></thead><tbody id="pincodes-table"></tbody></table></div>
+          <p class="admin-empty" id="pincodes-empty">No delivery PIN codes have been added.</p>
+        </section>
+        <section class="admin-section" id="admin-settings">
+          <div class="admin-section-heading"><div><span class="eyebrow">Demo identity</span><h2>Account settings</h2></div></div>
+          <form class="settings-editor" id="settings-form">
+            <label class="admin-field">Admin ID<input name="username" required maxlength="60"></label>
+            <label class="admin-field">Current password<input name="currentPassword" type="password" autocomplete="current-password" required></label>
+            <label class="admin-field">New password <span>(leave blank to keep current)</span><input name="password" type="password" minlength="12" autocomplete="new-password"></label>
+            <button class="button button-primary" type="submit">Update credentials <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="editor-image-note">Credentials are verified and updated by the server; a successful change signs out all admin sessions. Choose a unique password of at least 12 characters.</p>
+        </section>
+      </main>
+    </div>
+    <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+  </div>
+</body>
+</html>
