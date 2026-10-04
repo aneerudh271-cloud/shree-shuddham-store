@@ -88,7 +88,7 @@
           <div class="product-buy"><span class="price">₹${product.price} <small>/ ${escapeHtml(product.unit)}</small></span>
             <button class="add-button" data-product-id="${escapeHtml(product.id)}" type="button" aria-label="Add ${escapeHtml(product.name)} to basket">+</button>
           </div>
-          <button class="subscribe-link" type="button" data-subscribe="${escapeHtml(product.name)}">↻ Set up a subscription</button>
+          <button class="subscribe-link" type="button" data-subscribe="${escapeHtml(product.name)}">↻ Recurring delivery coming soon</button>
         </div>
       </article>`).join('');
     grid.querySelectorAll('.add-button').forEach((button) => button.addEventListener('click', () => {
@@ -107,7 +107,7 @@
       showToast(saved ? 'Added to your favourites' : 'Removed from your favourites');
     }));
     grid.querySelectorAll('.subscribe-link').forEach((button) => button.addEventListener('click', () => {
-      showToast(`Choose a delivery frequency for ${button.dataset.subscribe} when subscriptions are connected.`);
+      showToast(`Recurring delivery is not available yet. Add ${button.dataset.subscribe} to your basket for a one-time order.`);
       document.querySelector('#subscriptions').scrollIntoView({ behavior: 'smooth' });
     }));
     filterProducts();
@@ -629,11 +629,6 @@
     } finally {
       button.disabled = false;
     }
-  });
-  document.querySelector('#newsletter-form').addEventListener('submit', (event) => {
-    event.preventDefault();
-    showToast('Thanks for joining us. Newsletter sign-up will be connected soon.');
-    event.currentTarget.reset();
   });
   document.querySelector('#year').textContent = String(new Date().getFullYear());
   renderProducts();

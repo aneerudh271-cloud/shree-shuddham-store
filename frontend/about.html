@@ -12,33 +12,95 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:site_name" content="Shree Shuddham">
   <meta property="og:title" content="About Us | Shree Shuddham">
-  <meta property="og:description" content="Meet our leadership and discover the values and quality commitments behind Shree Shuddham.">
+  <meta property="og:description" content="Meet Shree Shuddham's leadership and learn about our values, community commitments and approach to product quality.">
   <meta property="og:url" content="https://www.shreeshuddham.com/about">
-  <meta property="og:image" content="https://www.shreeshuddham.com/assets/shree-shuddham-logo.png">
-  <meta property="og:image:alt" content="Shree Shuddham logo">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80">
+  <meta property="og:image:alt" content="Fresh produce representing Shree Shuddham's farm-to-home essentials">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Us | Shree Shuddham">
+  <meta name="twitter:description" content="Meet Shree Shuddham's leadership and learn about our values, community commitments and approach to product quality.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=80">
   <link rel="canonical" href="https://www.shreeshuddham.com/about">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="about.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About Shree Shuddham",
-    "url": "https://www.shreeshuddham.com/about",
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Shuddham",
-      "alternateName": "Shree Shuddham",
-      "description": "Purity Is Our Identity, Service Is Our Commitment",
-      "url": "https://www.shreeshuddham.com/",
-      "employee": [
-        { "@type": "Person", "name": "Rajpal Bana", "jobTitle": "Chief Executive Officer (CEO)" },
-        { "@type": "Person", "name": "Rajkumar Suryavanshi", "jobTitle": "State President — All India SC & ST Unity Forum, Madhya Pradesh" },
-        { "@type": "Person", "name": "Ajay Himanshu Nagar", "jobTitle": "Co-Founder" },
-        { "@type": "Person", "name": "Aneerudh Kumar", "alternateName": "Aneerudh Kumar Mishra", "jobTitle": "Technology Lead / Director" }
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://www.shreeshuddham.com/about#webpage",
+        "name": "About Shree Shuddham",
+        "url": "https://www.shreeshuddham.com/about",
+        "isPartOf": { "@id": "https://www.shreeshuddham.com/#website" },
+        "mainEntity": { "@id": "https://www.shreeshuddham.com/#organization" },
+        "breadcrumb": { "@id": "https://www.shreeshuddham.com/about#breadcrumb" },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.shreeshuddham.com/#organization",
+        "name": "Shuddham",
+        "alternateName": ["Shree Shuddham", "श्री शुद्धम्"],
+        "slogan": "Purity Is Our Identity, Service Is Our Commitment",
+        "url": "https://www.shreeshuddham.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.shreeshuddham.com/assets/shree-shuddham-logo.png"
+        },
+        "email": "hello@shreeshuddham.in"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.shreeshuddham.com/about#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.shreeshuddham.com/" },
+          { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.shreeshuddham.com/about" }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.shreeshuddham.com/about#rajpal-bana",
+        "name": "Rajpal Bana",
+        "jobTitle": "Chief Executive Officer (CEO)",
+        "description": "Originally from Village Khader in Vidisha District and currently based in Bhopal, Rajpal has been actively involved in social service since 2022. He is committed to community welfare, quality, transparency and responsible business practices.",
+        "image": "https://www.shreeshuddham.com/assets/rajpal-bana.jpg",
+        "telephone": "+919669876785",
+        "worksFor": { "@id": "https://www.shreeshuddham.com/#organization" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.shreeshuddham.com/about#rajkumar-suryavanshi",
+        "name": "Rajkumar Suryavanshi",
+        "jobTitle": "State President — All India SC & ST Unity Forum, Madhya Pradesh",
+        "description": "Originally from Village Baro Khajuri in Vidisha District and based in Bhopal, Rajkumar works in social justice, constitutional values, community development and public welfare.",
+        "image": "https://www.shreeshuddham.com/assets/rajkumar-suryavanshi.jpg",
+        "telephone": "+919340566521"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.shreeshuddham.com/about#ajay-himanshu-nagar",
+        "name": "Ajay Himanshu Nagar",
+        "jobTitle": "Co-Founder",
+        "description": "A farmer, entrepreneur and social worker deeply connected with his roots and rural communities, Ajay focuses on inclusive development, rural communities, public welfare and responsible entrepreneurship.",
+        "image": "https://www.shreeshuddham.com/assets/ajay-himanshu-nagar.jpg",
+        "telephone": "+919630432545",
+        "worksFor": { "@id": "https://www.shreeshuddham.com/#organization" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.shreeshuddham.com/about#aneerudh-kumar",
+        "name": "Aneerudh Kumar",
+        "alternateName": "Aneerudh Kumar Mishra",
+        "jobTitle": "Technology Lead / Director",
+        "description": "An aerospace innovator, technology leader and entrepreneur based in Bhopal, Aneerudh works across advanced aviation, autonomous systems, robotics, emerging energy technologies and AI-enabled systems.",
+        "image": "https://www.shreeshuddham.com/assets/aneerudh-kumar.jpg",
+        "worksFor": { "@id": "https://www.shreeshuddham.com/#organization" }
+      }
+    ]
   }
   </script>
 </head>
@@ -58,6 +120,7 @@
       <nav class="about-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="index.html#shop">Shop</a>
+        <a href="index.html#subscriptions">Delivery</a>
         <a href="#leadership" aria-current="page">Leadership</a>
         <a href="index.html#footer">Contact</a>
       </nav>

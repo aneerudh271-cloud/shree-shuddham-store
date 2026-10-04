@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f8f0">
   <title>Shree Shuddham | Fresh Farm-to-Home Essentials</title>
-  <meta name="description" content="Shop fresh milk, seasonal produce and everyday essentials from Shree Shuddham. Choose one-time delivery or a flexible subscription for your home.">
+  <meta name="description" content="Shop fresh milk, seasonal produce and everyday essentials from Shree Shuddham. Check PIN-code availability, choose a delivery slot and build your basket.">
   <meta name="robots" content="index,follow">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
@@ -13,29 +13,79 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:site_name" content="Shree Shuddham">
   <meta property="og:title" content="Shree Shuddham | Fresh Farm-to-Home Essentials">
-  <meta property="og:description" content="Fresh, trusted essentials delivered to your doorstep. Shop the season or set up a flexible daily subscription.">
+  <meta property="og:description" content="Shop fresh milk, seasonal produce and everyday essentials. Check PIN-code availability, choose a delivery slot and build your basket.">
   <meta property="og:url" content="https://www.shreeshuddham.com/">
   <meta property="og:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
   <meta property="og:image:alt" content="A colorful selection of fresh vegetables at a local market">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shree Shuddham | Fresh Farm-to-Home Essentials">
-  <meta name="twitter:description" content="Fresh, trusted essentials delivered to your doorstep.">
+  <meta name="twitter:description" content="Shop fresh milk, seasonal produce and everyday essentials. Check PIN-code availability and choose a delivery slot.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
   <link rel="canonical" href="https://www.shreeshuddham.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap">
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "GroceryStore",
-    "name": "Shree Shuddham",
-    "alternateName": "श्री शुद्धम्",
-    "description": "Fresh, trusted farm-to-home essentials with one-time and recurring home delivery.",
-    "url": "https://www.shreeshuddham.com/",
-    "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
-    "priceRange": "₹₹",
-    "areaServed": "India",
-    "sameAs": []
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.shreeshuddham.com/#organization",
+        "name": "Shuddham",
+        "alternateName": ["Shree Shuddham", "श्री शुद्धम्"],
+        "slogan": "Purity Is Our Identity, Service Is Our Commitment",
+        "description": "Shree Shuddham offers fresh milk, seasonal produce and everyday essentials, with delivery availability checked by PIN code.",
+        "url": "https://www.shreeshuddham.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.shreeshuddham.com/assets/shree-shuddham-logo.png"
+        },
+        "email": "hello@shreeshuddham.in"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.shreeshuddham.com/#website",
+        "url": "https://www.shreeshuddham.com/",
+        "name": "Shree Shuddham",
+        "publisher": {
+          "@id": "https://www.shreeshuddham.com/#organization"
+        },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.shreeshuddham.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can I check whether delivery is available at my address?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter your six-digit PIN code in the delivery checker at the top of the storefront and select Check. Delivery availability is based on the serviceable PIN codes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I place an order?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Add products to your basket, enter your delivery details, and choose an available delivery slot during checkout."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are online payments live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Checkout payment is a demonstration only. No real payment is collected."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -77,11 +127,11 @@
     <nav class="primary-nav shell" id="primary-nav" aria-label="Main navigation">
       <a href="#shop">Shop all</a>
       <a href="#categories">Categories</a>
-      <a href="#subscriptions">Subscriptions</a>
+      <a href="#subscriptions">Delivery options</a>
       <a href="#our-way">Our way</a>
       <a href="about.html">About us</a>
       <a href="#footer">Contact</a>
-      <a class="nav-cta" href="#subscriptions">Build your daily basket <span aria-hidden="true">↗</span></a>
+      <a class="nav-cta" href="#subscriptions">How ordering works <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
@@ -93,7 +143,7 @@
         <p>Good food has a way of bringing everyone together. Fill your home with fresh-picked produce, honest essentials and a little more peace of mind.</p>
         <div class="hero-buttons">
           <a class="button button-primary" href="#shop">Shop fresh <span aria-hidden="true">→</span></a>
-          <a class="button button-quiet" href="#subscriptions">Make it a routine <span aria-hidden="true">↗</span></a>
+          <a class="button button-quiet" href="#subscriptions">See delivery options <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-note">
           <div class="avatar-stack" aria-hidden="true"><span>☺</span><span>☺</span><span>☺</span></div>
@@ -113,7 +163,7 @@
         <div class="promise-item"><span class="promise-icon">✳</span><span><strong>Fresh, every day</strong><small>Thoughtfully sourced</small></span></div>
         <div class="promise-item"><span class="promise-icon">⌂</span><span><strong>At your doorstep</strong><small>Made for your routine</small></span></div>
         <div class="promise-item"><span class="promise-icon">♡</span><span><strong>Quality you can trust</strong><small>Care in every selection</small></span></div>
-        <div class="promise-item"><span class="promise-icon">↻</span><span><strong>Flexible subscriptions</strong><small>Pause, skip or change</small></span></div>
+        <div class="promise-item"><span class="promise-icon">↻</span><span><strong>Choose a delivery slot</strong><small>See available times at checkout</small></span></div>
       </div>
     </section>
 
@@ -154,19 +204,19 @@
         <div class="product-grid" id="product-grid">
           <article class="product-card" data-category="Milk & Dairy" data-name="Fresh cow milk">
             <div class="product-photo"><img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&amp;fit=crop&amp;w=600&amp;q=78" alt="Fresh cow milk in a clear glass bottle" loading="lazy" width="600" height="520"><span class="product-badge">Daily favourite</span><button class="save-button" type="button" aria-label="Save Fresh Cow Milk">♡</button></div>
-            <div class="product-info"><span class="product-category">MILK & DAIRY</span><h3>Fresh Cow Milk</h3><p>Gentle, creamy goodness for your morning ritual.</p><div class="product-buy"><span class="price">₹68 <small>/ 1 L</small></span><button class="add-button" data-product="Fresh Cow Milk" data-price="68" type="button" aria-label="Add Fresh Cow Milk to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Fresh Cow Milk">↻ Set up a subscription</button></div>
+            <div class="product-info"><span class="product-category">MILK & DAIRY</span><h3>Fresh Cow Milk</h3><p>Gentle, creamy goodness for your morning ritual.</p><div class="product-buy"><span class="price">₹68 <small>/ 1 L</small></span><button class="add-button" data-product="Fresh Cow Milk" data-price="68" type="button" aria-label="Add Fresh Cow Milk to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Fresh Cow Milk">↻ Recurring delivery coming soon</button></div>
           </article>
           <article class="product-card" data-category="Vegetables" data-name="Farm fresh tomatoes">
             <div class="product-photo"><img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&amp;fit=crop&amp;w=600&amp;q=78" alt="Ripe red tomatoes picked fresh" loading="lazy" width="600" height="520"><span class="product-badge badge-gold">In season</span><button class="save-button" type="button" aria-label="Save Farm Fresh Tomatoes">♡</button></div>
-            <div class="product-info"><span class="product-category">VEGETABLES</span><h3>Farm Fresh Tomatoes</h3><p>Bright, juicy and ready for your favourite recipes.</p><div class="product-buy"><span class="price">₹42 <small>/ 500 g</small></span><button class="add-button" data-product="Farm Fresh Tomatoes" data-price="42" type="button" aria-label="Add Farm Fresh Tomatoes to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Farm Fresh Tomatoes">↻ Set up a subscription</button></div>
+            <div class="product-info"><span class="product-category">VEGETABLES</span><h3>Farm Fresh Tomatoes</h3><p>Bright, juicy and ready for your favourite recipes.</p><div class="product-buy"><span class="price">₹42 <small>/ 500 g</small></span><button class="add-button" data-product="Farm Fresh Tomatoes" data-price="42" type="button" aria-label="Add Farm Fresh Tomatoes to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Farm Fresh Tomatoes">↻ Recurring delivery coming soon</button></div>
           </article>
           <article class="product-card" data-category="Fruits" data-name="Seasonal mangoes">
             <div class="product-photo"><img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&amp;fit=crop&amp;w=600&amp;q=78" alt="Golden ripe mangoes, a sweet seasonal fruit" loading="lazy" width="600" height="520"><span class="product-badge badge-pink">Seasonal pick</span><button class="save-button" type="button" aria-label="Save Seasonal Mangoes">♡</button></div>
-            <div class="product-info"><span class="product-category">FRUITS</span><h3>Seasonal Mangoes</h3><p>Sun-kissed sweetness to share around the table.</p><div class="product-buy"><span class="price">₹149 <small>/ 1 kg</small></span><button class="add-button" data-product="Seasonal Mangoes" data-price="149" type="button" aria-label="Add Seasonal Mangoes to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Seasonal Mangoes">↻ Set up a subscription</button></div>
+            <div class="product-info"><span class="product-category">FRUITS</span><h3>Seasonal Mangoes</h3><p>Sun-kissed sweetness to share around the table.</p><div class="product-buy"><span class="price">₹149 <small>/ 1 kg</small></span><button class="add-button" data-product="Seasonal Mangoes" data-price="149" type="button" aria-label="Add Seasonal Mangoes to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Seasonal Mangoes">↻ Recurring delivery coming soon</button></div>
           </article>
           <article class="product-card" data-category="Bakery" data-name="Country sourdough loaf">
             <div class="product-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&amp;fit=crop&amp;w=600&amp;q=78" alt="Golden country loaf of freshly baked bread" loading="lazy" width="600" height="520"><span class="product-badge badge-blue">Freshly baked</span><button class="save-button" type="button" aria-label="Save Country Sourdough Loaf">♡</button></div>
-            <div class="product-info"><span class="product-category">BREAD & BAKERY</span><h3>Country Sourdough Loaf</h3><p>A slow-made loaf with a crisp, golden crust.</p><div class="product-buy"><span class="price">₹120 <small>/ loaf</small></span><button class="add-button" data-product="Country Sourdough Loaf" data-price="120" type="button" aria-label="Add Country Sourdough Loaf to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Country Sourdough Loaf">↻ Set up a subscription</button></div>
+            <div class="product-info"><span class="product-category">BREAD & BAKERY</span><h3>Country Sourdough Loaf</h3><p>A slow-made loaf with a crisp, golden crust.</p><div class="product-buy"><span class="price">₹120 <small>/ loaf</small></span><button class="add-button" data-product="Country Sourdough Loaf" data-price="120" type="button" aria-label="Add Country Sourdough Loaf to basket">+</button></div><button class="subscribe-link" type="button" data-subscribe="Country Sourdough Loaf">↻ Recurring delivery coming soon</button></div>
           </article>
         </div>
         <p class="empty-state" id="empty-state" hidden>No favourites found. Try another search.</p>
@@ -180,12 +230,12 @@
         <div class="subscription-seal"><span>✳</span><small>YOUR DAILY<br>DOSE OF FRESH</small></div>
       </div>
       <div class="subscription-copy">
-        <span class="eyebrow">A rhythm that works for you</span>
-        <h2>Fresh milk.<br><em>Every morning.</em></h2>
-        <p>Set your essentials on repeat and spend less time remembering, more time enjoying. Your routine stays yours — change, pause or skip whenever life asks.</p>
-        <ul class="subscription-perks"><li><span>01</span>Choose the products you love</li><li><span>02</span>Pick your quantity and frequency</li><li><span>03</span>We bring it right to your door</li></ul>
-        <a class="button button-primary" href="#shop">Build your subscription <span aria-hidden="true">→</span></a>
-        <div class="flexibility-note"><span aria-hidden="true">↻</span> No pressure. Pause or skip any delivery.</div>
+      <span class="eyebrow">Ordering made simple</span>
+      <h2>Fresh essentials.<br><em>Delivered with care.</em></h2>
+      <p>Add items to your basket, check delivery availability with your PIN code, and choose an available slot during checkout. Recurring subscriptions are coming soon.</p>
+      <ul class="subscription-perks"><li><span>01</span>Choose products for your basket</li><li><span>02</span>Enter your PIN and delivery details</li><li><span>03</span>Select an available delivery slot</li></ul>
+      <a class="button button-primary" href="#shop">Start shopping <span aria-hidden="true">→</span></a>
+      <div class="flexibility-note"><span aria-hidden="true">ℹ</span> Checkout payments are demo-only; no real payment is collected.</div>
       </div>
     </section>
 
@@ -196,15 +246,36 @@
           <div class="value-card"><span>✿</span><strong>Chosen<br>with care</strong><small>Thoughtful picks for your family.</small></div>
           <div class="value-card"><span>⌂</span><strong>Rooted in<br>everyday life</strong><small>Good essentials, right on time.</small></div>
           <div class="value-card"><span>♡</span><strong>Made for<br>your family</strong><small>A little more ease around the table.</small></div>
-          <div class="value-card"><span>↻</span><strong>Your routine,<br>your rules</strong><small>Flexible deliveries that work for you.</small></div>
+          <div class="value-card"><span>↻</span><strong>Your delivery,<br>your choice</strong><small>Choose from the available delivery slots.</small></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section shell faq-section" id="faq">
+      <div class="about-section-heading faq-heading">
+        <span class="eyebrow">Helpful answers</span>
+        <h2>Shopping at <em>Shree Shuddham.</em></h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>How can I check whether delivery is available at my address?</summary>
+          <p>Enter your six-digit PIN code in the delivery checker at the top of the storefront and select Check. Delivery availability depends on whether your PIN code is serviceable.</p>
+        </details>
+        <details>
+          <summary>How do I place an order?</summary>
+          <p>Add products to your basket, enter your delivery details, and choose an available delivery slot during checkout.</p>
+        </details>
+        <details>
+          <summary>Are online payments live?</summary>
+          <p>No. Checkout payment is a demonstration only. No real payment is collected.</p>
+        </details>
       </div>
     </section>
 
     <section class="newsletter-section shell">
       <div class="newsletter-flower" aria-hidden="true">✳</div>
-      <div><span class="eyebrow">A fresh note from us</span><h2>Good things are <em>growing.</em></h2><p>Get seasonal picks, simple kitchen inspiration and the occasional little surprise.</p></div>
-      <form class="newsletter-form" id="newsletter-form"><label class="visually-hidden" for="email">Your email address</label><input id="email" type="email" placeholder="Your email address" required><button type="submit" aria-label="Subscribe to newsletter">Join us <span aria-hidden="true">→</span></button><small>By joining, you agree to receive occasional emails from us.</small></form>
+      <div><span class="eyebrow">Stay in touch</span><h2>Good things are <em>growing.</em></h2><p>We’re preparing a newsletter with seasonal picks and kitchen inspiration.</p></div>
+      <form class="newsletter-form" id="newsletter-form"><label class="visually-hidden" for="email">Newsletter email address</label><input id="email" type="email" placeholder="Newsletter sign-up coming soon" disabled><button type="button" aria-label="Newsletter sign-up coming soon" disabled>Coming soon</button><small>Newsletter sign-up is not active; your email will not be collected.</small></form>
     </section>
   </main>
 
@@ -215,14 +286,14 @@
         <p>Fresh, trusted essentials delivered to your doorstep. A little more care in every part of your day.</p>
         <a class="footer-email" href="mailto:hello@shreeshuddham.in">hello@shreeshuddham.in</a>
       </div>
-      <div class="footer-links"><h2>Explore</h2><a href="#shop">Shop all</a><a href="#categories">Categories</a><a href="#subscriptions">Subscriptions</a><a href="#our-way">Our way</a><a href="about.html">About us</a></div>
-      <div class="footer-links"><h2>We're here</h2><a href="mailto:hello@shreeshuddham.in">Contact us</a><a href="#footer">Delivery information</a><a href="#footer">Frequently asked questions</a><a href="#footer">Help & support</a></div>
-      <div class="footer-links"><h2>The details</h2><a href="#footer">Privacy policy</a><a href="#footer">Terms & conditions</a><a href="#footer">Refund policy</a><span class="social-label">Follow along <span aria-hidden="true">↗</span></span></div>
+      <div class="footer-links"><h2>Explore</h2><a href="#shop">Shop all</a><a href="#categories">Categories</a><a href="#subscriptions">Delivery options</a><a href="#our-way">Our way</a><a href="about.html">About us</a></div>
+      <div class="footer-links"><h2>We're here</h2><a href="mailto:hello@shreeshuddham.in">Contact us</a><a href="#subscriptions">Delivery information</a><a href="#faq">Frequently asked questions</a><a href="mailto:hello@shreeshuddham.in?subject=Shree%20Shuddham%20support">Help &amp; support</a></div>
+      <div class="footer-links"><h2>Policies &amp; questions</h2><a href="mailto:hello@shreeshuddham.in?subject=Privacy%20question">Ask about privacy</a><a href="mailto:hello@shreeshuddham.in?subject=Terms%20question">Ask about terms</a><a href="mailto:hello@shreeshuddham.in?subject=Refund%20question">Ask about refunds</a><span class="social-label">Social updates coming soon</span></div>
     </div>
     <div class="shell footer-bottom"><span>© <span id="year"></span> Shree Shuddham. Made with care.</span><span>शुद्धता की परंपरा <span class="footer-sun">✳</span></span></div>
   </footer>
 
-  <nav class="mobile-nav" aria-label="Mobile navigation"><a href="#top"><span>⌂</span>Home</a><a href="#shop"><span>⌕</span>Shop</a><a href="#subscriptions"><span>↻</span>Routine</a><button id="mobile-account-button" type="button"><span>♙</span>Account</button></nav>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a href="#top"><span>⌂</span>Home</a><a href="#shop"><span>⌕</span>Shop</a><a href="#subscriptions"><span>↻</span>Delivery</a><button id="mobile-account-button" type="button"><span>♙</span>Account</button></nav>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <dialog class="checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-title">
     <div class="checkout-shell">
