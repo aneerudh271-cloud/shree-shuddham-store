@@ -19,6 +19,7 @@
 .leader-card { min-width: 0; display: flex; align-items: flex-start; gap: 20px; padding: 23px; border: 1px solid var(--line); background: var(--paper); }
 .leader-card-featured { grid-column: 1 / -1; align-items: center; gap: 31px; background: #fcfbf5; }
 .leader-photo-wrap { width: min(31%, 230px); min-width: 170px; height: 274px; flex: 0 0 auto; overflow: hidden; background: #e8e2d9; }
+.leader-photo-wrap-small { width: 74px; min-width: 74px; height: 74px; border-radius: 50%; }
 .leader-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 23%; }
 .leader-copy { min-width: 0; }
 .leader-label { color: #8a7545; font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
@@ -72,6 +73,7 @@
   .leader-grid { grid-template-columns: 1fr; gap: 12px; }
   .leader-card-featured { grid-column: auto; align-items: flex-start; gap: 15px; padding: 14px; }
   .leader-photo-wrap { width: 34%; min-width: 105px; height: 174px; }
+  .leader-photo-wrap-small { width: 48px; min-width: 48px; height: 48px; }
   .leader-copy h3 { font-size: 21px; }
   .leader-role { font-size: 10px; }
   .leader-copy > p:not(.leader-role) { font-size: 10px; }
