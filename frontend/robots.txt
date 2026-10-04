@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.shreeshuddham.in/sitemap.xml
+Sitemap: https://www.shreeshuddham.com/sitemap.xml
