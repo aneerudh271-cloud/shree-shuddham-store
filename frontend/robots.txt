@@ -1,5 +1,21 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
+Disallow: /admin
 
 Sitemap: https://www.shreeshuddham.com/sitemap.xml
