@@ -1,6 +1,6 @@
 # Shree Shuddham — Vercel + Render deployment
 
-This is a static storefront hosted on Vercel, with a Node.js API service on Render and MongoDB Atlas persistence. Vercel proxies `/api/*` requests to Render so browser requests and admin session cookies remain same-origin. Product, coupon, order and admin records are served by `/api`; the browser is not the source of truth for prices or order status. Payment is intentionally simulated: **no Razorpay SDK, key, charge, or payment verification is configured.**
+This is a static storefront hosted on Vercel, with a Node.js API service on Render and MongoDB Atlas persistence. Vercel proxies `/api/*` requests to Render so browser requests and admin session cookies remain same-origin. Product, coupon, service-area, admin and order records are served by `/api`; the browser is not the source of truth for prices or order status. The shopping basket remains in the customer's browser until checkout. Payment is intentionally simulated: **no Razorpay SDK, key, charge, or payment verification is configured.** Order and delivery details are saved in MongoDB when checkout creates the order.
 
 ## Deploy
 
@@ -54,6 +54,6 @@ Admin sessions use random opaque tokens stored only as SHA-256 hashes in MongoDB
 
 ## Payment and launch readiness
 
-The checkout intentionally moves forward using the simulated payment choice and clearly marks orders/invoices as demo-only. Its `paymentStatus` is **not proof of payment**; do not fulfil or account for demo-paid orders as real revenue. To enable Razorpay later, add server-side order creation and signature/webhook verification, store secrets only in Vercel environment variables, and move orders to review only after verified payment.
+The checkout intentionally moves forward using a simulated test-payment choice and clearly marks orders/invoices as unpaid test records. Its `paymentStatus` is **not proof of payment**; do not fulfil or account for test orders as real revenue. To enable Razorpay later, add server-side order creation and signature/webhook verification, store secrets only in server environment variables, and move orders to review only after verified payment.
 
 Before accepting real customer information, configure Atlas backups and network access, establish privacy/retention and support processes, test Vercel production/preview environment separation, and publish accurate business, refund, tax, and delivery policies. The invoice is a downloadable prototype document and is explicitly not a tax invoice.

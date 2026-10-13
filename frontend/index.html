@@ -81,7 +81,7 @@
             "name": "Are online payments live?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Checkout payment is a demonstration only. No real payment is collected."
+              "text": "No. Payments are currently simulated; there is no live payment gateway and no payment is collected."
             }
           }
         ]
@@ -236,7 +236,7 @@
       <p>Add items to your basket, check delivery availability with your PIN code, and choose an available slot during checkout. Recurring subscriptions are coming soon.</p>
       <ul class="subscription-perks"><li><span>01</span>Choose products for your basket</li><li><span>02</span>Enter your PIN and delivery details</li><li><span>03</span>Select an available delivery slot</li></ul>
       <a class="button button-primary" href="#shop">Start shopping <span aria-hidden="true">→</span></a>
-      <div class="flexibility-note"><span aria-hidden="true">ℹ</span> Checkout payments are demo-only; no real payment is collected.</div>
+      <div class="flexibility-note"><span aria-hidden="true">ℹ</span> Payments are currently simulated; no live payment gateway is connected and no charge is collected. Orders and delivery details are saved to the store database. Use test customer details until live payments are enabled.</div>
       </div>
     </section>
 
@@ -268,7 +268,7 @@
         </details>
         <details>
           <summary>Are online payments live?</summary>
-          <p>No. Checkout payment is a demonstration only. No real payment is collected.</p>
+          <p>Not yet. Checkout currently records a simulated test payment only; no live payment gateway is connected and no money is collected. Order and delivery details are saved to the store database. Please use test customer details until live payments are enabled.</p>
         </details>
       </div>
     </section>
@@ -303,7 +303,7 @@
         <button class="dialog-close" id="close-checkout" type="button" aria-label="Close checkout">×</button>
       </div>
       <div id="checkout-content"></div>
-      <p class="demo-disclaimer">Demo checkout only. No real payment is collected. Do not enter real names, phone numbers, addresses, or payment details.</p>
+      <p class="demo-disclaimer">Payment is currently simulated: no live gateway is connected and no charge is collected. Order and delivery details are saved to the store database. Use test customer details until live payments are enabled.</p>
     </div>
   </dialog>
   <script src="app.js" defer></script>

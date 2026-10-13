@@ -33,7 +33,7 @@
   <div class="admin-app" id="admin-app" hidden>
     <header class="admin-header">
       <a class="brand" href="index.html"><picture><source srcset="assets/shree-shuddham-logo.webp" type="image/webp"><img class="brand-logo" src="assets/shree-shuddham-logo.png" alt="Shree Shuddham" width="632" height="598"></picture></a>
-      <div class="admin-header-right"><span class="demo-pill">LOCAL DEMO</span><span id="admin-current-user">Admin</span><button class="admin-button subtle-button" id="admin-logout" type="button">Exit demo</button></div>
+      <div class="admin-header-right"><span class="demo-pill">DATABASE-BACKED</span><span id="admin-current-user">Admin</span><button class="admin-button subtle-button" id="admin-logout" type="button">Sign out</button></div>
     </header>
     <div class="admin-layout">
       <aside class="admin-sidebar">
@@ -47,22 +47,22 @@
         <a class="sidebar-store-link" href="index.html">← View storefront</a>
       </aside>
       <main class="admin-content">
-        <div class="admin-demo-banner"><strong>Prototype data only.</strong> This demo stores products, coupons, delivery PIN codes and orders in this browser's local storage. It is not connected to a database, real Razorpay, or a secure admin service.</div>
+        <div class="admin-demo-banner"><strong>Database-backed operations.</strong> Products, coupons, delivery PIN codes, admin credentials, and customer orders are stored in the connected database. Payments are still simulated; no live payment is collected. Treat test-payment orders as test records, not paid sales.</div>
         <section id="admin-overview">
           <span class="eyebrow">Your shop at a glance</span>
           <h1>Good morning, <em id="admin-name-heading">Admin.</em></h1>
-          <p class="admin-subtitle">Review incoming demo orders and keep your catalogue up to date.</p>
+          <p class="admin-subtitle">Review customer orders and keep your catalogue up to date.</p>
           <div class="admin-metrics">
             <article><span>Orders to review</span><strong id="metric-pending">0</strong></article>
             <article><span>Products in shop</span><strong id="metric-products">0</strong></article>
             <article><span>Active coupons</span><strong id="metric-coupons">0</strong></article>
-            <article><span>Demo order value</span><strong id="metric-revenue">₹0</strong></article>
+            <article><span>Test order total (not revenue)</span><strong id="metric-revenue">₹0</strong></article>
           </div>
         </section>
         <section class="admin-section" id="admin-orders">
           <div class="admin-section-heading"><div><span class="eyebrow">Customer requests</span><h2>Orders</h2></div><button class="admin-button" id="refresh-admin" type="button">Refresh</button></div>
-          <div class="admin-table-wrap"><table><thead><tr><th>Order / customer</th><th>Delivery / agent</th><th>Items / total</th><th>Payment (demo)</th><th>Status / manage</th></tr></thead><tbody id="orders-table"></tbody></table></div>
-          <p class="admin-empty" id="orders-empty">No demo orders yet. Customer checkouts on this same browser appear here.</p>
+          <div class="admin-table-wrap"><table><thead><tr><th>Order / customer</th><th>Delivery / agent</th><th>Items / total</th><th>Payment (test mode)</th><th>Status / manage</th></tr></thead><tbody id="orders-table"></tbody></table></div>
+          <p class="admin-empty" id="orders-empty">No orders yet. Orders placed through the storefront will appear here after the test-payment step.</p>
           <button class="admin-button" id="load-more-orders" type="button" hidden>Load older orders</button>
         </section>
         <section class="admin-section" id="admin-products">
@@ -76,7 +76,7 @@
             <label class="admin-field editor-wide">Description<input name="description" required maxlength="140"></label>
             <label class="admin-field editor-wide">Image URL<input name="image" type="url" placeholder="https://..."></label>
             <label class="admin-field editor-wide">Image alt text<input name="alt" maxlength="140"></label>
-            <p class="editor-image-note">Use a hosted HTTPS image URL. Leave the image URL blank to remove the product image. Images added here are saved only in this browser demo.</p>
+            <p class="editor-image-note">Use a hosted HTTPS image URL. Leave the image URL blank to remove the product image. Product details, image URLs, and alt text are saved to the database.</p>
             <div class="editor-actions"><button class="button button-primary" id="save-product" type="submit">Add product <span aria-hidden="true">+</span></button><button class="admin-button subtle-button" id="cancel-product-edit" type="button" hidden>Cancel edit</button></div>
           </form>
           <div class="admin-table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Image</th><th>Actions</th></tr></thead><tbody id="products-table"></tbody></table></div>
@@ -102,7 +102,7 @@
           <p class="admin-empty" id="pincodes-empty">No delivery PIN codes have been added.</p>
         </section>
         <section class="admin-section" id="admin-settings">
-          <div class="admin-section-heading"><div><span class="eyebrow">Demo identity</span><h2>Account settings</h2></div></div>
+          <div class="admin-section-heading"><div><span class="eyebrow">Admin account</span><h2>Account settings</h2></div></div>
           <form class="settings-editor" id="settings-form">
             <label class="admin-field">Admin ID<input name="username" required maxlength="60"></label>
             <label class="admin-field">Current password<input name="currentPassword" type="password" autocomplete="current-password" required></label>

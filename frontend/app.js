@@ -218,7 +218,7 @@
         </label>
         <div class="checkout-field wide"><span>Coupon code</span><div class="coupon-row"><input id="coupon-code" autocomplete="off" placeholder="Enter coupon code"><button id="apply-coupon" type="button">Apply</button></div><p class="coupon-message" id="coupon-message" aria-live="polite"></p></div>
         <div class="checkout-field wide" id="totals-container">${totalsHtml()}</div>
-        <button class="button button-primary checkout-submit checkout-field wide" type="submit">Continue to demo payment <span aria-hidden="true">→</span></button>
+        <button class="button button-primary checkout-submit checkout-field wide" type="submit">Continue to payment test <span aria-hidden="true">→</span></button>
       </form>`;
     checkoutContent.querySelectorAll('.quantity-control button').forEach((button) => button.addEventListener('click', () => {
       const id = button.dataset.id;
@@ -303,13 +303,13 @@
 
   function renderDemoPayment(draft) {
     checkoutContent.innerHTML = `
-      <div class="payment-notice"><strong>Razorpay test-mode placeholder.</strong> This checkout is simulated only: no Razorpay API is connected, and no payment details or money are collected. Use fictional customer information only.</div>
+      <div class="payment-notice"><strong>Payment is currently simulated.</strong> No live payment gateway is connected and no charge is collected. Your order and delivery details are saved to the store database. Use test customer details until live payments are enabled.</div>
       <div class="payment-review">
-        <h3>Review your payment</h3>
+        <h3>Review your test order</h3>
         <p><strong>${escapeHtml(draft.customer.name)}</strong><br>${escapeHtml(formatAddress(draft.customer))}<br>${escapeHtml(draft.deliveryDay || draft.customer.deliveryDay)} · ${escapeHtml(draft.deliverySlot || draft.customer.deliverySlot)}</p>
-        <div class="order-total-line grand"><span>Amount due</span><span>₹${draft.total}</span></div>
-        <label class="checkout-field payment-method">Demo payment method<select id="demo-payment-method"><option>UPI (simulated)</option><option>Card (simulated)</option><option>Net banking (simulated)</option><option>Wallet (simulated)</option></select></label>
-        <div class="confirmation-actions"><button class="button button-primary" id="complete-demo-payment" type="button">Pay with Razorpay demo <span aria-hidden="true">→</span></button><button class="button button-outline" id="back-to-delivery" type="button">Back to delivery details</button></div>
+        <div class="order-total-line grand"><span>Test order total</span><span>₹${draft.total}</span></div>
+        <label class="checkout-field payment-method">Simulated payment method<select id="demo-payment-method"><option value="UPI (simulated)">UPI (test simulation)</option><option value="Card (simulated)">Card (test simulation)</option><option value="Net banking (simulated)">Net banking (test simulation)</option><option value="Wallet (simulated)">Wallet (test simulation)</option></select></label>
+        <div class="confirmation-actions"><button class="button button-primary" id="complete-demo-payment" type="button">Place test order (no charge) <span aria-hidden="true">→</span></button><button class="button button-outline" id="back-to-delivery" type="button">Back to delivery details</button></div>
       </div>`;
     checkoutContent.querySelector('#complete-demo-payment').addEventListener('click', () => completeDemoPayment(draft, checkoutContent.querySelector('#demo-payment-method').value));
     checkoutContent.querySelector('#back-to-delivery').addEventListener('click', () => renderBasket(draft.customer));
@@ -319,7 +319,7 @@
     if (backendEnabled) {
       const button = checkoutContent.querySelector('#complete-demo-payment');
       button.disabled = true;
-      button.textContent = 'Starting demo payment…';
+      button.textContent = 'Saving test order…';
       try {
         const { order } = await apiRequest(`/api/orders/${encodeURIComponent(draft.id)}/demo-payment`, {
           method: 'POST',
@@ -333,7 +333,7 @@
         console.error('Demo payment initiation failed.', error);
         showToast(error.message);
         button.disabled = false;
-        button.innerHTML = 'Pay with Razorpay demo <span aria-hidden="true">→</span>';
+        button.innerHTML = 'Place test order (no charge) <span aria-hidden="true">→</span>';
       }
       return;
     }
@@ -566,12 +566,12 @@
 
   function renderConfirmation(order) {
     checkoutContent.innerHTML = `
-      <div class="payment-notice"><strong>Razorpay test mode placeholder.</strong> No Razorpay API is connected and no money has been charged. This demo records an order only in this browser; use fictional information only.</div>
+      <div class="payment-notice"><strong>Test order saved.</strong> The order and delivery details are stored in the store database. Payment is simulated only; no live payment gateway is connected and no charge was collected.</div>
       <div class="confirmation-box">
         <span class="confirmation-mark" aria-hidden="true">✓</span>
-        <h3>Demo payment initiated</h3>
-        <p>Order <strong>${escapeHtml(order.id)}</strong><br>Delivery: ${escapeHtml(order.deliveryDate)} · ${escapeHtml(order.deliverySlot)}<br>Total: ₹${order.total}<br>Payment is simulated only. Your order is awaiting admin review.</p>
-        <div class="confirmation-actions"><button class="button button-primary" id="download-invoice" type="button">Download demo invoice PDF <span aria-hidden="true">↓</span></button><button class="button button-outline" id="close-confirmation" type="button">Continue shopping</button></div>
+        <h3>Test order recorded</h3>
+        <p>Order <strong>${escapeHtml(order.id)}</strong><br>Delivery: ${escapeHtml(order.deliveryDate)} · ${escapeHtml(order.deliverySlot)}<br>Total: ₹${order.total}<br>No payment was collected. This test order is awaiting admin review.</p>
+        <div class="confirmation-actions"><button class="button button-primary" id="download-invoice" type="button">Download test order PDF <span aria-hidden="true">↓</span></button><button class="button button-outline" id="close-confirmation" type="button">Continue shopping</button></div>
       </div>`;
     checkoutContent.querySelector('#download-invoice').addEventListener('click', () => {
       try {
